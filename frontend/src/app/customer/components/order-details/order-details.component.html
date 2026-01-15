@@ -1,0 +1,237 @@
+<div class="fade-in">
+  <!-- Back Button -->
+  <div class="mb-4">
+    <button class="btn btn-outline-secondary" (click)="trackAnotherOrder()">
+      <i class="fas fa-arrow-left me-2"></i>Track Another Order
+    </button>
+  </div>
+
+  <!-- Loading State -->
+  <div *ngIf="isLoading" class="text-center py-5">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <p class="mt-3">Loading order details...</p>
+  </div>
+
+  <!-- Error State -->
+  <div *ngIf="errorMessage && !isLoading" class="alert alert-danger">
+    <i class="fas fa-exclamation-triangle me-2"></i>
+    {{ errorMessage }}
+  </div>
+
+  <!-- Order Details -->
+  <div *ngIf="orderDetails && !isLoading" class="fade-in">
+    <!-- Header Card -->
+    <div class="card shadow mb-4">
+      <div class="card-header bg-primary text-white">
+        <div class="row align-items-center">
+          <div class="col-md-8">
+            <h4 class="mb-0">
+              <i class="fas fa-box me-2"></i>Order Tracking Details
+            </h4>
+            <small class="opacity-75">Last updated: {{ lastUpdated }}</small>
+          </div>
+          <div class="col-md-4 text-end">
+            <div class="form-check form-switch form-check-reverse">
+              <input class="form-check-input" type="checkbox" role="switch" id="autoRefresh"
+                [(ngModel)]="autoRefreshEnabled" (change)="toggleAutoRefresh()">
+              <label class="form-check-label text-white" for="autoRefresh">
+                Auto-refresh
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-6">
+            <h5>Tracking Information</h5>
+            <table class="table table-borderless">
+              <tr>
+                <th width="40%">Tracking ID:</th>
+                <td>
+                  <span class="badge bg-dark fs-6">{{ orderDetails.trackingId }}</span>
+                </td>
+              </tr>
+              <tr>
+                <th>Customer Name:</th>
+                <td>{{ orderDetails.customerName }}</td>
+              </tr>
+              <tr *ngIf="orderDetails.companyName">
+                <th><i class="fas fa-building me-2 text-muted"></i>Company Name:</th>
+                <td>{{ orderDetails.companyName }}</td>
+              </tr>
+              <tr *ngIf="orderDetails.companyAddress">
+                <th><i class="fas fa-map-marker-alt me-2 text-muted"></i>Company Address:</th>
+                <td>{{ orderDetails.companyAddress }}</td>
+              </tr>
+              <tr>
+                <th>Item:</th>
+                <td>{{ orderDetails.itemName }}</td>
+              </tr>
+              <tr>
+                <th>Order Date:</th>
+                <td>{{ formatDate(orderDetails.orderDate) }}</td>
+              </tr>
+            </table>
+          </div>
+          <div class="col-md-6">
+            <h5>Current Status</h5>
+            <div class="text-center py-3">
+              <span class="badge bg-{{ getStatusColor(orderDetails.status) }} fs-5 p-3">
+                <i class="fas fa-{{ getStatusIcon(orderDetails.status) }} me-2"></i>
+                {{ getStatusText(orderDetails.status) }}
+              </span>
+            </div>
+            <div class="text-center">
+              <p class="mb-1">
+                <i class="fas fa-map-marker-alt me-2"></i>
+                {{ orderDetails.currentLocation }}
+              </p>
+              <p class="mb-0">
+                <i class="fas fa-calendar-alt me-2"></i>
+                Estimated Delivery: {{ orderDetails.estimatedDelivery }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Progress Tracker -->
+    <div class="card shadow mb-4">
+      <div class="card-header bg-light">
+        <h5 class="mb-0">
+          <i class="fas fa-road me-2"></i>Order Journey
+        </h5>
+      </div>
+      <div class="card-body">
+        <!-- Progress Bar -->
+        <div class="progress mb-4" style="height: 10px;">
+          <div class="progress-bar bg-success" role="progressbar" [style.width.%]="getProgressPercentage()">
+          </div>
+        </div>
+
+        <!-- Progress Steps -->
+        <div class="row text-center">
+          <div *ngFor="let step of progressSteps; let i = index" class="col">
+            <div class="step-container" [class.active]="i <= getActiveStepIndex()">
+              <div class="step-icon">
+                <i [class]="step.icon"></i>
+              </div>
+              <div class="step-label mt-2">
+                <small class="fw-bold">{{ step.label }}</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Timeline -->
+    <div class="card shadow mb-4">
+      <div class="card-header bg-light">
+        <h5 class="mb-0">
+          <i class="fas fa-history me-2"></i>Order Timeline
+        </h5>
+      </div>
+      <div class="card-body">
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-icon bg-primary">
+              <i class="fas fa-shopping-cart"></i>
+            </div>
+            <div class="timeline-content">
+              <h6>Order Placed</h6>
+              <p class="text-muted small">{{ formatDate(orderDetails.orderDate) }}</p>
+            </div>
+          </div>
+
+          <div *ngIf="orderDetails.status !== 'PROCESSING'" class="timeline-item">
+            <div class="timeline-icon bg-success">
+              <i class="fas fa-check"></i>
+            </div>
+            <div class="timeline-content">
+              <h6>Order Confirmed</h6>
+              <p class="text-muted small">Your order has been confirmed</p>
+            </div>
+          </div>
+
+          <div *ngIf="['DISPATCHED', 'IN_TRANSIT', 'OUT_FOR_DELIVERY', 'DELIVERED'].includes(orderDetails.status)"
+            class="timeline-item">
+            <div class="timeline-icon bg-info">
+              <i class="fas fa-truck-loading"></i>
+            </div>
+            <div class="timeline-content">
+              <h6>Order Dispatched</h6>
+              <p class="text-muted small">Your order has left our warehouse</p>
+            </div>
+          </div>
+
+          <div *ngIf="['IN_TRANSIT', 'OUT_FOR_DELIVERY', 'DELIVERED'].includes(orderDetails.status)"
+            class="timeline-item">
+            <div class="timeline-icon bg-warning">
+              <i class="fas fa-shipping-fast"></i>
+            </div>
+            <div class="timeline-content">
+              <h6>In Transit</h6>
+              <p class="text-muted small">Your order is on the way</p>
+            </div>
+          </div>
+
+          <div *ngIf="['OUT_FOR_DELIVERY', 'DELIVERED'].includes(orderDetails.status)" class="timeline-item">
+            <div class="timeline-icon bg-primary">
+              <i class="fas fa-truck"></i>
+            </div>
+            <div class="timeline-content">
+              <h6>Out for Delivery</h6>
+              <p class="text-muted small">Your order will be delivered today</p>
+            </div>
+          </div>
+
+          <div *ngIf="orderDetails.status === 'DELIVERED'" class="timeline-item">
+            <div class="timeline-icon bg-success">
+              <i class="fas fa-home"></i>
+            </div>
+            <div class="timeline-content">
+              <h6>Delivered</h6>
+              <p class="text-muted small">Your order has been delivered</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Notes Section -->
+    <div *ngIf="orderDetails.notes" class="card shadow">
+      <div class="card-header bg-light">
+        <h5 class="mb-0">
+          <i class="fas fa-sticky-note me-2"></i>Additional Notes
+        </h5>
+      </div>
+      <div class="card-body">
+        <div class="alert alert-info mb-0">
+          <i class="fas fa-info-circle me-2"></i>
+          {{ orderDetails.notes }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Share Section -->
+  <div class="mt-4 text-center">
+    <p class="text-muted">Share this tracking page:</p>
+    <div class="btn-group" role="group">
+      <button class="btn btn-outline-primary">
+        <i class="fas fa-link me-2"></i>Copy Link
+      </button>
+      <button class="btn btn-outline-success">
+        <i class="fas fa-envelope me-2"></i>Email
+      </button>
+      <button class="btn btn-outline-info">
+        <i class="fas fa-sms me-2"></i>SMS
+      </button>
+    </div>
+  </div>
+</div>

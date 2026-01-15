@@ -1,0 +1,74 @@
+<div class="track-page-container fade-in">
+  <div class="content-wrapper container">
+    <div class="row align-items-center flex-row-reverse">
+      <!-- Right Column: Text & Illustration (visually right, but technically 2nd col) 
+           Wait, user said 'opposite to given image'. Image is Left Text, Right Form. 
+           So we want Left Form, Right Text. 
+           Bootstrap 'row' is naturally left-to-right. 
+           Col 1: Form. Col 2: Text.
+      -->
+
+      <!-- Left Column (Form) -->
+      <div class="col-lg-5 mb-5 mb-lg-0">
+        <div class="tracking-card shadow-lg p-4 p-md-5 bg-white rounded-4">
+          <h5 class="fw-bold mb-4 text-dark">Track Order</h5>
+
+          <form [formGroup]="trackForm" (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+              <label for="trackingId" class="form-label text-muted small fw-semibold">ORDER ID</label>
+              <input type="text" class="form-control form-control-lg bg-light border-0" id="trackingId"
+                formControlName="trackingId" placeholder="Enter your Order ID" [ngClass]="{
+                  'is-invalid': trackingIdControl?.invalid && (trackingIdControl?.dirty || trackingIdControl?.touched)
+                }">
+              <!-- Validation -->
+              <div *ngIf="trackingIdControl?.invalid && (trackingIdControl?.dirty || trackingIdControl?.touched)"
+                class="invalid-feedback">
+                <div *ngIf="trackingIdControl?.errors?.['required']">Order ID is required.</div>
+                <div *ngIf="trackingIdControl?.errors?.['minlength']">Must be at least 10 chars.</div>
+              </div>
+            </div>
+
+            <button class="btn btn-primary w-100 btn-lg rounded-3 fw-bold mt-3 shadow-sm" type="submit"
+              [disabled]="trackForm.invalid || isLoading">
+              <span *ngIf="!isLoading">Track now</span>
+              <span *ngIf="isLoading"><i class="fas fa-spinner fa-spin"></i> Tracking...</span>
+            </button>
+          </form>
+
+          <!-- Helper text -->
+          <div class="mt-4 pt-3 border-top">
+            <h6 class="fw-bold text-dark small">Can’t Find Your Order Details?</h6>
+            <p class="text-muted small mb-0">
+              Check your email or SMS for the Order ID sent upon confirmation.
+            </p>
+          </div>
+
+          <!-- Messages -->
+          <div *ngIf="errorMessage" class="alert alert-danger mt-3 small p-2" role="alert">
+            <i class="fas fa-exclamation-triangle me-1"></i> {{ errorMessage }}
+          </div>
+          <div *ngIf="successMessage" class="alert alert-success mt-3 small p-2" role="alert">
+            <i class="fas fa-check-circle me-1"></i> {{ successMessage }}
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column (Hero Text & Image) -->
+      <div class="col-lg-7 text-center text-lg-start ps-lg-5">
+        <h1 class="hero-title mb-2">
+          Track your <br>
+          <span class="gradient-text">orders easily</span>
+        </h1>
+        <p class="hero-subtitle mb-5">
+          Just enter your Order ID & it’s done.
+        </p>
+
+        <div class="illustration-wrapper">
+          <img src="assets/images/tracking-illustration.png" alt="Order Tracking"
+            class="illustration-img mx-auto mx-lg-0">
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

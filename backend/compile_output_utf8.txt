@@ -1,0 +1,336 @@
+﻿mvn : WARNING: A 
+terminally deprecated 
+method in 
+sun.misc.Unsafe has 
+been called
+At line:1 char:1
++ mvn compile > 
+compile_output.txt 
+2>&1
++ ~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~
+    + CategoryInfo    
+          : NotSpeci  
+  fied: (WARNING: A   
+  term...has been     
+called:String) []    
+, RemoteException
+    + FullyQualifiedE 
+   rrorId : NativeCo  
+  mmandError
+ 
+WARNING: sun.misc.Unsa
+fe::staticFieldBase 
+has been called by com
+.google.inject.interna
+l.aop.HiddenClassDefin
+er (file:/C:/Program%2
+0Files/apache-maven-3.
+9.11/lib/guice-5.1.0-c
+lasses.jar)
+WARNING: Please 
+consider reporting 
+this to the 
+maintainers of class c
+om.google.inject.inter
+nal.aop.HiddenClassDef
+iner
+WARNING: sun.misc.Unsa
+fe::staticFieldBase 
+will be removed in a 
+future release
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] --------------< com.ordertracking:order-tracking-backend >--------------
+[INFO] Building order-tracking-backend 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.2.0:resources (default-resources) @ order-tracking-backend ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Using 'UTF-8' encoding to copy filtered properties files.
+[INFO] Copying 1 resource
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- compiler:3.10.1:compile (default-compile) @ order-tracking-backend ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 23 source files to S:\order-tracking-system\backend\target\classes
+[INFO] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/config/SecurityConfig.java: S:\order-tracking-system\backend\src\main\java\com\ordertracking\config\SecurityConfig.java uses or overrides a deprecated API.
+[INFO] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/config/SecurityConfig.java: Recompile with -Xlint:deprecation for details.
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/service/TrackingService.java:[24,37] cannot find symbol
+  symbol:   method getTrackingId()
+  location: variable order of type com.ordertracking.model.Order
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/service/TrackingService.java:[25,39] cannot find symbol
+  symbol:   method getCustomerName()
+  location: variable order of type com.ordertracking.model.Order
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/service/TrackingService.java:[26,35] cannot find symbol
+  symbol:   method getItemName()
+  location: variable order of type com.ordertracking.model.Order
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/service/TrackingService.java:[27,33] cannot find symbol
+  symbol:   method getStatus()
+  location: variable order of type com.ordertracking.model.Order
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/service/TrackingService.java:[28,40] cannot find symbol
+  symbol:   method getStatus()
+  location: variable order of type com.ordertracking.model.Order
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/service/TrackingService.java:[29,36] cannot find symbol
+  symbol:   method getOrderDate()
+  location: variable order of type com.ordertracking.model.Order
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/service/TrackingService.java:[30,32] cannot find symbol
+  symbol:   method getNotes()
+  location: variable order of type com.ordertracking.model.Order
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/service/TrackingService.java:[34,17] cannot find symbol
+  symbol:   method setLastUpdated(java.time.LocalDateTime)
+  location: variable response of type com.ordertracking.dto.TrackingResponse
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/service/TrackingService.java:[37,17] cannot find symbol
+  symbol:   method setEstimatedDelivery(java.lang.String)
+  location: variable response of type com.ordertracking.dto.TrackingResponse
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/service/TrackingService.java:[40,61] cannot find symbol
+  symbol:   method getStatus()
+  location: variable order of type com.ordertracking.model.Order
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/service/TrackingService.java:[46,18] cannot find symbol
+  symbol:   method getDeliveredDate()
+  location: variable order of type com.ordertracking.model.Order
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/service/TrackingService.java:[47,25] cannot find symbol
+  symbol:   method getDeliveredDate()
+  location: variable order of type com.ordertracking.model.Order
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/service/TrackingService.java:[48,18] cannot find symbol
+  symbol:   method getInTransitDate()
+  location: variable order of type com.ordertracking.model.Order
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/service/TrackingService.java:[49,25] cannot find symbol
+  symbol:   method getInTransitDate()
+  location: variable order of type com.ordertracking.model.Order
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/service/TrackingService.java:[50,18] cannot find symbol
+  symbol:   method getDispatchedDate()
+  location: variable order of type com.ordertracking.model.Order
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/service/TrackingService.java:[51,25] cannot find symbol
+  symbol:   method getDispatchedDate()
+  location: variable order of type com.ordertracking.model.Order
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/service/TrackingService.java:[52,21] cannot find symbol
+  symbol:   method getOrderDate()
+  location: variable order of type com.ordertracking.model.Order
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/service/TrackingService.java:[56,40] cannot find symbol
+  symbol:   method getOrderDate()
+  location: variable order of type com.ordertracking.model.Order
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/service/TrackingService.java:[57,18] cannot find symbol
+  symbol:   method getStatus()
+  location: variable order of type com.ordertracking.model.Order
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/service/TrackingService.java:[59,25] cannot find symbol
+  symbol:   method getStatus()
+  location: variable order of type com.ordertracking.model.Order
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/service/TrackingService.java:[61,25] cannot find symbol
+  symbol:   method getStatus()
+  location: variable order of type com.ordertracking.model.Order
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/controller/AuthController.java:[37,41] cannot find symbol
+  symbol:   method getUsername()
+  location: variable loginRequest of type com.ordertracking.dto.LoginRequest
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/controller/AuthController.java:[38,41] cannot find symbol
+  symbol:   method getPassword()
+  location: variable loginRequest of type com.ordertracking.dto.LoginRequest
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/controller/AuthController.java:[40,65] cannot find symbol
+  symbol:   method getUsername()
+  location: variable loginRequest of type com.ordertracking.dto.LoginRequest
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/controller/AuthController.java:[42,84] cannot find symbol
+  symbol:   method getUsername()
+  location: variable loginRequest of type com.ordertracking.dto.LoginRequest
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/controller/AuthController.java:[49,30] cannot find symbol
+  symbol:   method getRole()
+  location: variable admin of type com.ordertracking.model.AdminUser
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/controller/AuthController.java:[48,30] cannot find symbol
+  symbol:   method getFullName()
+  location: variable admin of type com.ordertracking.model.AdminUser
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/controller/AuthController.java:[47,30] cannot find symbol
+  symbol:   method getUsername()
+  location: variable admin of type com.ordertracking.model.AdminUser
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/service/AdminService.java:[26,18] cannot find symbol
+  symbol:   method setUsername(java.lang.String)
+  location: variable admin of type com.ordertracking.model.AdminUser
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/service/AdminService.java:[27,18] cannot find symbol
+  symbol:   method setPassword(java.lang.String)
+  location: variable admin of type com.ordertracking.model.AdminUser
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/service/AdminService.java:[28,18] cannot find symbol
+  symbol:   method setEmail(java.lang.String)
+  location: variable admin of type com.ordertracking.model.AdminUser
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/service/AdminService.java:[29,18] cannot find symbol
+  symbol:   method setFullName(java.lang.String)
+  location: variable admin of type com.ordertracking.model.AdminUser
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/service/AdminService.java:[30,18] cannot find symbol
+  symbol:   method setRole(java.lang.String)
+  location: variable admin of type com.ordertracking.model.AdminUser
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/service/AdminService.java:[43,59] cannot find symbol
+  symbol:   method getPassword()
+  location: variable admin of type com.ordertracking.model.AdminUser
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/service/OrderService.java:[25,14] cannot find symbol
+  symbol:   method setOrderDate(java.time.LocalDateTime)
+  location: variable order of type com.ordertracking.model.Order
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/service/OrderService.java:[26,14] cannot find symbol
+  symbol:   method setStatus(com.ordertracking.model.OrderStatus)
+  location: variable order of type com.ordertracking.model.Order
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/service/OrderService.java:[49,65] cannot find symbol
+  symbol:   method getStatus()
+  location: variable statusUpdate of type com.ordertracking.dto.OrderStatusUpdateDTO
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/service/OrderService.java:[50,14] cannot find symbol
+  symbol:   method setStatus(com.ordertracking.model.OrderStatus)
+  location: variable order of type com.ordertracking.model.Order
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/service/OrderService.java:[55,22] cannot find symbol
+  symbol:   method setDispatchedDate(java.time.LocalDateTime)
+  location: variable order of type com.ordertracking.model.Order
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/service/OrderService.java:[58,22] cannot find symbol
+  symbol:   method setInTransitDate(java.time.LocalDateTime)
+  location: variable order of type com.ordertracking.model.Order
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/service/OrderService.java:[64,22] cannot find symbol
+  symbol:   method setDeliveredDate(java.time.LocalDateTime)
+  location: variable order of type com.ordertracking.model.Order
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/service/OrderService.java:[68,25] cannot find symbol
+  symbol:   method getNotes()
+  location: variable statusUpdate of type com.ordertracking.dto.OrderStatusUpdateDTO
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/service/OrderService.java:[69,40] cannot find symbol
+  symbol:   method getNotes()
+  location: variable statusUpdate of type com.ordertracking.dto.OrderStatusUpdateDTO
+[INFO] 43 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  4.745 s
+[INFO] Finished at: 2026-01-13T16:48:09+05:30
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.10.1:compile (default-compile) on project order-tracking-backend: Compilation failure: Compilation failure: 
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/service/TrackingService.java:[24,37] cannot find symbol
+[ERROR]   symbol:   method getTrackingId()
+[ERROR]   location: variable order of type com.ordertracking.model.Order
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/service/TrackingService.java:[25,39] cannot find symbol
+[ERROR]   symbol:   method getCustomerName()
+[ERROR]   location: variable order of type com.ordertracking.model.Order
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/service/TrackingService.java:[26,35] cannot find symbol
+[ERROR]   symbol:   method getItemName()
+[ERROR]   location: variable order of type com.ordertracking.model.Order
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/service/TrackingService.java:[27,33] cannot find symbol
+[ERROR]   symbol:   method getStatus()
+[ERROR]   location: variable order of type com.ordertracking.model.Order
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/service/TrackingService.java:[28,40] cannot find symbol
+[ERROR]   symbol:   method getStatus()
+[ERROR]   location: variable order of type com.ordertracking.model.Order
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/service/TrackingService.java:[29,36] cannot find symbol
+[ERROR]   symbol:   method getOrderDate()
+[ERROR]   location: variable order of type com.ordertracking.model.Order
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/service/TrackingService.java:[30,32] cannot find symbol
+[ERROR]   symbol:   method getNotes()
+[ERROR]   location: variable order of type com.ordertracking.model.Order
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/service/TrackingService.java:[34,17] cannot find symbol
+[ERROR]   symbol:   method setLastUpdated(java.time.LocalDateTime)
+[ERROR]   location: variable response of type com.ordertracking.dto.TrackingResponse
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/service/TrackingService.java:[37,17] cannot find symbol
+[ERROR]   symbol:   method setEstimatedDelivery(java.lang.String)
+[ERROR]   location: variable response of type com.ordertracking.dto.TrackingResponse
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/service/TrackingService.java:[40,61] cannot find symbol
+[ERROR]   symbol:   method getStatus()
+[ERROR]   location: variable order of type com.ordertracking.model.Order
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/service/TrackingService.java:[46,18] cannot find symbol
+[ERROR]   symbol:   method getDeliveredDate()
+[ERROR]   location: variable order of type com.ordertracking.model.Order
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/service/TrackingService.java:[47,25] cannot find symbol
+[ERROR]   symbol:   method getDeliveredDate()
+[ERROR]   location: variable order of type com.ordertracking.model.Order
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/service/TrackingService.java:[48,18] cannot find symbol
+[ERROR]   symbol:   method getInTransitDate()
+[ERROR]   location: variable order of type com.ordertracking.model.Order
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/service/TrackingService.java:[49,25] cannot find symbol
+[ERROR]   symbol:   method getInTransitDate()
+[ERROR]   location: variable order of type com.ordertracking.model.Order
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/service/TrackingService.java:[50,18] cannot find symbol
+[ERROR]   symbol:   method getDispatchedDate()
+[ERROR]   location: variable order of type com.ordertracking.model.Order
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/service/TrackingService.java:[51,25] cannot find symbol
+[ERROR]   symbol:   method getDispatchedDate()
+[ERROR]   location: variable order of type com.ordertracking.model.Order
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/service/TrackingService.java:[52,21] cannot find symbol
+[ERROR]   symbol:   method getOrderDate()
+[ERROR]   location: variable order of type com.ordertracking.model.Order
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/service/TrackingService.java:[56,40] cannot find symbol
+[ERROR]   symbol:   method getOrderDate()
+[ERROR]   location: variable order of type com.ordertracking.model.Order
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/service/TrackingService.java:[57,18] cannot find symbol
+[ERROR]   symbol:   method getStatus()
+[ERROR]   location: variable order of type com.ordertracking.model.Order
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/service/TrackingService.java:[59,25] cannot find symbol
+[ERROR]   symbol:   method getStatus()
+[ERROR]   location: variable order of type com.ordertracking.model.Order
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/service/TrackingService.java:[61,25] cannot find symbol
+[ERROR]   symbol:   method getStatus()
+[ERROR]   location: variable order of type com.ordertracking.model.Order
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/controller/AuthController.java:[37,41] cannot find symbol
+[ERROR]   symbol:   method getUsername()
+[ERROR]   location: variable loginRequest of type com.ordertracking.dto.LoginRequest
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/controller/AuthController.java:[38,41] cannot find symbol
+[ERROR]   symbol:   method getPassword()
+[ERROR]   location: variable loginRequest of type com.ordertracking.dto.LoginRequest
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/controller/AuthController.java:[40,65] cannot find symbol
+[ERROR]   symbol:   method getUsername()
+[ERROR]   location: variable loginRequest of type com.ordertracking.dto.LoginRequest
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/controller/AuthController.java:[42,84] cannot find symbol
+[ERROR]   symbol:   method getUsername()
+[ERROR]   location: variable loginRequest of type com.ordertracking.dto.LoginRequest
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/controller/AuthController.java:[49,30] cannot find symbol
+[ERROR]   symbol:   method getRole()
+[ERROR]   location: variable admin of type com.ordertracking.model.AdminUser
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/controller/AuthController.java:[48,30] cannot find symbol
+[ERROR]   symbol:   method getFullName()
+[ERROR]   location: variable admin of type com.ordertracking.model.AdminUser
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/controller/AuthController.java:[47,30] cannot find symbol
+[ERROR]   symbol:   method getUsername()
+[ERROR]   location: variable admin of type com.ordertracking.model.AdminUser
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/service/AdminService.java:[26,18] cannot find symbol
+[ERROR]   symbol:   method setUsername(java.lang.String)
+[ERROR]   location: variable admin of type com.ordertracking.model.AdminUser
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/service/AdminService.java:[27,18] cannot find symbol
+[ERROR]   symbol:   method setPassword(java.lang.String)
+[ERROR]   location: variable admin of type com.ordertracking.model.AdminUser
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/service/AdminService.java:[28,18] cannot find symbol
+[ERROR]   symbol:   method setEmail(java.lang.String)
+[ERROR]   location: variable admin of type com.ordertracking.model.AdminUser
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/service/AdminService.java:[29,18] cannot find symbol
+[ERROR]   symbol:   method setFullName(java.lang.String)
+[ERROR]   location: variable admin of type com.ordertracking.model.AdminUser
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/service/AdminService.java:[30,18] cannot find symbol
+[ERROR]   symbol:   method setRole(java.lang.String)
+[ERROR]   location: variable admin of type com.ordertracking.model.AdminUser
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/service/AdminService.java:[43,59] cannot find symbol
+[ERROR]   symbol:   method getPassword()
+[ERROR]   location: variable admin of type com.ordertracking.model.AdminUser
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/service/OrderService.java:[25,14] cannot find symbol
+[ERROR]   symbol:   method setOrderDate(java.time.LocalDateTime)
+[ERROR]   location: variable order of type com.ordertracking.model.Order
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/service/OrderService.java:[26,14] cannot find symbol
+[ERROR]   symbol:   method setStatus(com.ordertracking.model.OrderStatus)
+[ERROR]   location: variable order of type com.ordertracking.model.Order
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/service/OrderService.java:[49,65] cannot find symbol
+[ERROR]   symbol:   method getStatus()
+[ERROR]   location: variable statusUpdate of type com.ordertracking.dto.OrderStatusUpdateDTO
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/service/OrderService.java:[50,14] cannot find symbol
+[ERROR]   symbol:   method setStatus(com.ordertracking.model.OrderStatus)
+[ERROR]   location: variable order of type com.ordertracking.model.Order
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/service/OrderService.java:[55,22] cannot find symbol
+[ERROR]   symbol:   method setDispatchedDate(java.time.LocalDateTime)
+[ERROR]   location: variable order of type com.ordertracking.model.Order
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/service/OrderService.java:[58,22] cannot find symbol
+[ERROR]   symbol:   method setInTransitDate(java.time.LocalDateTime)
+[ERROR]   location: variable order of type com.ordertracking.model.Order
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/service/OrderService.java:[64,22] cannot find symbol
+[ERROR]   symbol:   method setDeliveredDate(java.time.LocalDateTime)
+[ERROR]   location: variable order of type com.ordertracking.model.Order
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/service/OrderService.java:[68,25] cannot find symbol
+[ERROR]   symbol:   method getNotes()
+[ERROR]   location: variable statusUpdate of type com.ordertracking.dto.OrderStatusUpdateDTO
+[ERROR] /S:/order-tracking-system/backend/src/main/java/com/ordertracking/service/OrderService.java:[69,40] cannot find symbol
+[ERROR]   symbol:   method getNotes()
+[ERROR]   location: variable statusUpdate of type com.ordertracking.dto.OrderStatusUpdateDTO
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

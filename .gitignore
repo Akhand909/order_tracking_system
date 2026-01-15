@@ -1,0 +1,29 @@
+
+# Angular
+/frontend/node_modules
+/frontend/dist
+/frontend/.angular
+/frontend/.cache
+/frontend/tmp
+
+# Java/Maven
+/backend/target
+/backend/.mvn/wrapper/maven-wrapper.jar
+/backend/**/*.jar
+/backend/**/*.war
+/backend/**/*.ear
+/backend/**/*.nar
+/backend/**/*.sar
+/backend/**/*.class
+/backend/*.log
+
+# IDE
+.idea
+.vscode
+*.iml
+*.ipr
+*.iws
+
+# OS
+.DS_Store
+Thumbs.db

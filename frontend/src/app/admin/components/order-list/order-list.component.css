@@ -1,0 +1,46 @@
+.table th {
+  cursor: pointer;
+  user-select: none;
+}
+
+.table th:hover {
+  background-color: rgba(0,0,0,0.02);
+}
+
+.badge {
+  font-family: 'Courier New', monospace;
+  font-size: 0.8em;
+}
+
+.btn-group-sm .btn {
+  padding: 0.25rem 0.5rem;
+}
+
+.card-header {
+  background-color: #f8f9fa;
+  border-bottom: 1px solid rgba(0,0,0,0.125);
+}
+
+.table-responsive {
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+@media (max-width: 768px) {
+  .table-responsive {
+    font-size: 0.85rem;
+  }
+  
+  .btn-group {
+    flex-wrap: wrap;
+  }
+  
+  .btn-group-sm .btn {
+    margin-bottom: 2px;
+  }
+}
+
+/* Summary Cards */
+.text-center .h4 {
+  font-weight: 600;
+}

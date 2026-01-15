@@ -1,0 +1,90 @@
+.track-page-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  /* Vertically center content */
+  justify-content: center;
+  padding: 2rem 0;
+
+}
+
+.content-wrapper {
+  max-width: 1200px;
+}
+
+/* Card Styling */
+.tracking-card {
+  border: none;
+  background-color: #fff;
+  transition: transform 0.3s ease;
+}
+
+.tracking-card:hover {
+  transform: translateY(-5px);
+}
+
+.form-control:focus {
+  background-color: #fff;
+  box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.15);
+  /* Soft primary glow */
+  border-color: transparent;
+}
+
+.btn-primary {
+  background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+  /* Vivid gradient for Track button */
+  border: none;
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+/* Text & Illustration (Right Side) */
+.hero-title {
+  font-weight: 800;
+  font-size: 3.5rem;
+  line-height: 1.1;
+  color: #2c3e50;
+  letter-spacing: -1px;
+}
+
+.gradient-text {
+  background: linear-gradient(to right, #ff9966, #ff5e62);
+  /* Coral gradient for text */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  color: #6c757d;
+  font-weight: 500;
+}
+
+.illustration-img {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  display: block;
+  /* Resetting styles for new image */
+  margin-top: 0;
+}
+
+@media (max-width: 991.98px) {
+  .track-page-container {
+    padding-top: 4rem;
+    align-items: flex-start;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+    margin-top: 3rem;
+  }
+
+  .illustration-img {
+    max-width: 100%;
+    margin-top: -15%;
+  }
+}

@@ -1,0 +1,67 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/">
+      <i class="fas fa-shipping-fast me-2"></i>
+      Order Tracking System
+    </a>
+    
+    <button class="navbar-toggler" type="button" (click)="toggleMenu()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse" [class.show]="!isCollapsed">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/customer/track" routerLinkActive="active">
+            <i class="fas fa-search me-1"></i> Track Order
+          </a>
+        </li>
+        
+        <li *ngIf="authService.isLoggedIn && authService.isAdmin" class="nav-item">
+          <a class="nav-link" routerLink="/admin/dashboard" routerLinkActive="active">
+            <i class="fas fa-tachometer-alt me-1"></i> Dashboard
+          </a>
+        </li>
+        
+        <li *ngIf="authService.isLoggedIn && authService.isAdmin" class="nav-item">
+          <a class="nav-link" routerLink="/admin/orders" routerLinkActive="active">
+            <i class="fas fa-list me-1"></i> Orders
+          </a>
+        </li>
+        
+        <li *ngIf="authService.isLoggedIn && authService.isAdmin" class="nav-item">
+          <a class="nav-link" routerLink="/admin/create" routerLinkActive="active">
+            <i class="fas fa-plus-circle me-1"></i> Create Order
+          </a>
+        </li>
+      </ul>
+      
+      <ul class="navbar-nav">
+        <li *ngIf="!authService.isLoggedIn" class="nav-item">
+          <a class="nav-link" routerLink="/admin/login">
+            <i class="fas fa-sign-in-alt me-1"></i> Admin Login
+          </a>
+        </li>
+        
+        <li *ngIf="authService.isLoggedIn" class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" 
+             data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-user-circle me-1"></i>
+            {{ authService.currentUserValue?.fullName }}
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+            <li>
+              <h6 class="dropdown-header">Logged in as Admin</h6>
+            </li>
+            <li><hr class="dropdown-divider"></li>
+            <li>
+              <a class="dropdown-item" (click)="logout()">
+                <i class="fas fa-sign-out-alt me-2"></i> Logout
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

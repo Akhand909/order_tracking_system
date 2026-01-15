@@ -1,0 +1,55 @@
+.stat-card {
+  border: none;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+}
+
+.stat-icon {
+  font-size: 2.5rem;
+  opacity: 0.8;
+}
+
+.action-card {
+  border: 2px solid;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  height: 100%;
+}
+
+.action-card:hover {
+  transform: translateY(-5px);
+}
+
+.hover-primary:hover {
+  background-color: rgba(52, 152, 219, 0.1);
+}
+
+.hover-success:hover {
+  background-color: rgba(39, 174, 96, 0.1);
+}
+
+.hover-info:hover {
+  background-color: rgba(41, 128, 185, 0.1);
+}
+
+.table tbody tr:hover {
+  background-color: rgba(52, 152, 219, 0.05);
+}
+
+canvas {
+  max-height: 300px;
+}
+
+@media (max-width: 768px) {
+  .stat-icon {
+    font-size: 2rem;
+  }
+  
+  .action-card {
+    margin-bottom: 15px;
+  }
+}

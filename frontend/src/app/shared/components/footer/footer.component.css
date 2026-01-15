@@ -1,0 +1,22 @@
+.footer {
+  margin-top: auto;
+}
+
+.footer h5 {
+  color: #fff;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.footer a {
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer a:hover {
+  color: #fff !important;
+}
+
+.footer .list-unstyled li {
+  margin-bottom: 8px;
+}
