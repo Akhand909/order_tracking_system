@@ -18,8 +18,10 @@ public class TrackingService {
     private OrderRepository orderRepository;
 
     public TrackingResponse getOrderDetails(String trackingId) {
+        System.out.println("Fetching details for Tracking ID: " + trackingId);
         Order order = orderRepository.findByTrackingId(trackingId)
                 .orElseThrow(() -> new OrderNotFoundException("Order not found with tracking ID: " + trackingId));
+        System.out.println("Found Order: " + order.getId() + ", Tracking ID in DB: " + order.getTrackingId());
 
         TrackingResponse response = new TrackingResponse();
         response.setTrackingId(order.getTrackingId());

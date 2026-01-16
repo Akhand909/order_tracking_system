@@ -146,7 +146,7 @@ export class DashboardComponent implements OnInit {
         return this.orderService.formatDate(dateString);
     }
 
-    viewOrderDetails(orderId: number): void {
+    viewOrderDetails(orderId: string): void {
         this.router.navigate(['/admin/update-status', orderId]);
     }
 

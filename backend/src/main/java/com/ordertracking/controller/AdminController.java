@@ -14,43 +14,43 @@ import java.util.List;
 @RequestMapping("/api/admin")
 @CrossOrigin(origins = "http://localhost:4200")
 public class AdminController {
-    
+
     @Autowired
     private OrderService orderService;
-    
+
     @GetMapping("/orders")
     public ResponseEntity<List<OrderDTO>> getAllOrders() {
         return ResponseEntity.ok(orderService.getAllOrders());
     }
-    
+
     @GetMapping("/orders/{id}")
-    public ResponseEntity<OrderDTO> getOrderById(@PathVariable Long id) {
+    public ResponseEntity<OrderDTO> getOrderById(@PathVariable String id) {
         return ResponseEntity.ok(orderService.getOrderById(id));
     }
-    
+
     @GetMapping("/orders/tracking/{trackingId}")
     public ResponseEntity<OrderDTO> getOrderByTrackingId(@PathVariable String trackingId) {
         return ResponseEntity.ok(orderService.getOrderByTrackingId(trackingId));
     }
-    
+
     @PostMapping("/orders")
     public ResponseEntity<OrderDTO> createOrder(@Valid @RequestBody OrderDTO orderDTO) {
         return ResponseEntity.ok(orderService.createOrder(orderDTO));
     }
-    
+
     @PutMapping("/orders/{id}/status")
     public ResponseEntity<OrderDTO> updateOrderStatus(
-            @PathVariable Long id,
+            @PathVariable String id,
             @Valid @RequestBody OrderStatusUpdateDTO statusUpdate) {
         return ResponseEntity.ok(orderService.updateOrderStatus(id, statusUpdate));
     }
-    
+
     @DeleteMapping("/orders/{id}")
-    public ResponseEntity<Void> deleteOrder(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteOrder(@PathVariable String id) {
         orderService.deleteOrder(id);
         return ResponseEntity.noContent().build();
     }
-    
+
     @GetMapping("/health")
     public ResponseEntity<String> healthCheck() {
         return ResponseEntity.ok("Admin API is healthy");

@@ -146,11 +146,11 @@ export class OrderListComponent implements OnInit {
     return this.orderService.formatCurrency(amount);
   }
 
-  viewOrder(orderId: number): void {
+  viewOrder(orderId: string): void {
     this.router.navigate(['/admin/update-status', orderId]);
   }
 
-  deleteOrder(orderId: number): void {
+  deleteOrder(orderId: string): void {
     if (confirm('Are you sure you want to delete this order?')) {
       this.orderService.deleteOrder(orderId).subscribe({
         next: () => {

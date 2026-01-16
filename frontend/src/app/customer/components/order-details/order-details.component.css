@@ -1,112 +1,321 @@
-/* Status Icons */
-.status-icon {
-  font-size: 3rem;
-  margin-bottom: 1rem;
+:host {
+  --primary-color: #0f172a;
+  /* Slate 900 */
+  --secondary-color: #475569;
+  /* Slate 600 */
+  --accent-color: #2563eb;
+  /* Blue 600 */
+  --success-color: #059669;
+  /* Emerald 600 */
+  --bg-color: #f8fafc;
+  /* Slate 50 */
+  --card-bg: #ffffff;
+  --text-primary: #1e293b;
+  /* Slate 800 */
+  --text-secondary: #64748b;
+  /* Slate 500 */
+  --border-color: #e2e8f0;
+  /* Slate 200 */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -1px rgb(0 0 0 / 0.06);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -2px rgb(0 0 0 / 0.05);
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: var(--text-primary);
+  max-width: 1000px;
+  /* Constrain width for better "document" feel */
+  margin: 0 auto;
+}
+
+/* Cards */
+.card {
+  border: none;
+  border-radius: 16px;
+  background-color: var(--card-bg);
+  box-shadow: var(--shadow-md);
+  margin-bottom: 2rem;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+
+.card-header {
+  background-color: #007bff;
+  /* Vibrant Blue from user input */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1.5rem;
+  color: white;
+}
+
+.card-header h4,
+.card-header h5 {
+  color: white;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  margin-bottom: 0;
+}
+
+.card-body {
+  padding: 2rem;
+}
+
+/* Typography & Details */
+h5 {
+  color: var(--secondary-color);
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+}
+
+.tracking-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  padding-bottom: 1rem;
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.detail-label {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.detail-value {
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.tracking-id-value {
+  font-family: 'Monaco', 'Consolas', monospace;
+  background-color: var(--bg-color);
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+/* Status Badge */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 1rem;
+  box-shadow: var(--shadow-sm);
+  background-color: var(--bg-color);
+  /* Default fallback */
 }
 
 /* Progress Steps */
 .step-container {
-  opacity: 0.5;
-  transition: opacity 0.3s ease;
-}
-
-.step-container.active {
   opacity: 1;
+  /* Always visible but dimmed if inactive */
 }
 
 .step-icon {
-  width: 50px;
-  height: 50px;
+  width: 48px;
+  height: 48px;
   margin: 0 auto;
-  background-color: #e9ecef;
+  background-color: var(--bg-color);
+  color: var(--text-secondary);
+  border: 2px solid var(--border-color);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   transition: all 0.3s ease;
+  position: relative;
+  z-index: 10;
 }
 
 .step-container.active .step-icon {
-  background-color: var(--primary-color);
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
   color: white;
-  transform: scale(1.1);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.2);
+}
+
+.step-label {
+  color: var(--text-secondary);
+  font-weight: 500;
+  font-size: 0.875rem;
+  margin-top: 0.75rem;
+  transition: color 0.3s ease;
+}
+
+.step-container.active .step-label {
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+/* Progress Bar */
+.progress {
+  height: 4px;
+  background-color: var(--border-color);
+  border-radius: 2px;
+  margin-bottom: 2rem;
+  position: relative;
+  overflow: visible;
+  /* Allow icons to pop out */
+  top: 24px;
+  /* Align with center of icons */
+  z-index: 1;
+  /* Behind icons */
+}
+
+.progress-bar {
+  background: linear-gradient(90deg, var(--accent-color), #60a5fa);
+  border-radius: 2px;
+  transition: width 1s ease;
 }
 
 /* Timeline */
 .timeline {
   position: relative;
-  padding-left: 30px;
+  padding-left: 40px;
 }
 
 .timeline::before {
   content: '';
   position: absolute;
-  left: 15px;
+  left: 19px;
+  /* Center of the 40px padding roughly? No, icon width */
   top: 0;
   bottom: 0;
   width: 2px;
-  background-color: #dee2e6;
+  background-color: var(--border-color);
 }
 
 .timeline-item {
   position: relative;
-  margin-bottom: 20px;
+  margin-bottom: 2.5rem;
 }
 
 .timeline-icon {
   position: absolute;
-  left: -30px;
-  width: 30px;
-  height: 30px;
+  left: -40px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
+  background-color: var(--bg-color);
+  border: 4px solid white;
+  /* Creates gap effect */
+  box-shadow: var(--shadow-sm);
+  z-index: 2;
 }
 
-.timeline-content {
-  padding-left: 20px;
+/* Icon Colors */
+.timeline-icon.bg-primary {
+  background-color: var(--accent-color);
 }
 
-/* Responsive */
+.timeline-icon.bg-success {
+  background-color: var(--success-color);
+}
+
+.timeline-icon.bg-info {
+  background-color: #0ea5e9;
+}
+
+.timeline-icon.bg-warning {
+  background-color: #f59e0b;
+}
+
+.timeline-content h6 {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: var(--primary-color);
+}
+
+.timeline-content p {
+  color: var(--text-secondary);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile Tweaks */
 @media (max-width: 768px) {
-  .step-icon {
-    width: 40px;
-    height: 40px;
-    font-size: 1rem;
-  }
-  
-  .timeline {
-    padding-left: 20px;
-  }
-  
-  .timeline::before {
-    left: 10px;
-  }
-  
-  .timeline-icon {
-    left: -20px;
-    width: 20px;
-    height: 20px;
-    font-size: 0.8rem;
+  .tracking-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
 }
 
-/* Helper function for status icon */
-:host {
-  /* This function is called from template */
+/* Custom Badge Colors (Subtle variants) */
+.bg-primary-subtle {
+  background-color: #dbeafe !important;
+  /* Blue 100 */
+  color: #1e40af !important;
+  /* Blue 800 */
 }
 
-getStatusIcon(status: string): string {
-  switch(status) {
-    case 'PROCESSING': return 'box-open';
-    case 'CONFIRMED': return 'check-circle';
-    case 'DISPATCHED': return 'truck-loading';
-    case 'IN_TRANSIT': return 'shipping-fast';
-    case 'OUT_FOR_DELIVERY': return 'truck';
-    case 'DELIVERED': return 'home';
-    default: return 'box';
-  }
+.bg-success-subtle {
+  background-color: #dcfce7 !important;
+  /* Emerald 100 */
+  color: #166534 !important;
+  /* Emerald 800 */
+}
+
+.bg-warning-subtle {
+  background-color: #fef9c3 !important;
+  /* Yellow 100 */
+  color: #854d0e !important;
+  /* Yellow 800 */
+}
+
+.bg-info-subtle {
+  background-color: #e0f2fe !important;
+  /* Sky 100 */
+  color: #075985 !important;
+  /* Sky 800 */
+}
+
+.bg-danger-subtle {
+  background-color: #fee2e2 !important;
+  /* Red 100 */
+  color: #991b1b !important;
+  /* Red 800 */
+}
+
+.bg-secondary-subtle {
+  background-color: #f1f5f9 !important;
+  /* Slate 100 */
+  color: #334155 !important;
+  /* Slate 700 */
+}
+
+.bg-dark-subtle {
+  background-color: #f1f5f9 !important;
+  color: #0f172a !important;
 }

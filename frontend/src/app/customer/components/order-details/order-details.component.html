@@ -23,85 +23,90 @@
   <!-- Order Details -->
   <div *ngIf="orderDetails && !isLoading" class="fade-in">
     <!-- Header Card -->
-    <div class="card shadow mb-4">
-      <div class="card-header bg-primary text-white">
-        <div class="row align-items-center">
-          <div class="col-md-8">
-            <h4 class="mb-0">
-              <i class="fas fa-box me-2"></i>Order Tracking Details
-            </h4>
-            <small class="opacity-75">Last updated: {{ lastUpdated }}</small>
-          </div>
-          <div class="col-md-4 text-end">
-            <div class="form-check form-switch form-check-reverse">
-              <input class="form-check-input" type="checkbox" role="switch" id="autoRefresh"
-                [(ngModel)]="autoRefreshEnabled" (change)="toggleAutoRefresh()">
-              <label class="form-check-label text-white" for="autoRefresh">
-                Auto-refresh
-              </label>
-            </div>
-          </div>
+    <!-- Header Card -->
+    <div class="card fade-in">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <div>
+          <h4 class="mb-1">
+            Order Details
+          </h4>
+          <small class="text-white opacity-75">Last updated: {{ lastUpdated }}</small>
+        </div>
+        <div class="form-check form-switch form-check-reverse">
+          <input class="form-check-input" type="checkbox" role="switch" id="autoRefresh"
+            [(ngModel)]="autoRefreshEnabled" (change)="toggleAutoRefresh()">
+          <label class="form-check-label text-white small fw-bold" for="autoRefresh">
+            Auto-refresh
+          </label>
         </div>
       </div>
       <div class="card-body">
-        <div class="row">
-          <div class="col-md-6">
-            <h5>Tracking Information</h5>
-            <table class="table table-borderless">
-              <tr>
-                <th width="40%">Tracking ID:</th>
-                <td>
-                  <span class="badge bg-dark fs-6">{{ orderDetails.trackingId }}</span>
-                </td>
-              </tr>
-              <tr>
-                <th>Customer Name:</th>
-                <td>{{ orderDetails.customerName }}</td>
-              </tr>
-              <tr *ngIf="orderDetails.companyName">
-                <th><i class="fas fa-building me-2 text-muted"></i>Company Name:</th>
-                <td>{{ orderDetails.companyName }}</td>
-              </tr>
-              <tr *ngIf="orderDetails.companyAddress">
-                <th><i class="fas fa-map-marker-alt me-2 text-muted"></i>Company Address:</th>
-                <td>{{ orderDetails.companyAddress }}</td>
-              </tr>
-              <tr>
-                <th>Item:</th>
-                <td>{{ orderDetails.itemName }}</td>
-              </tr>
-              <tr>
-                <th>Order Date:</th>
-                <td>{{ formatDate(orderDetails.orderDate) }}</td>
-              </tr>
-            </table>
+
+        <!-- Top Status Row -->
+        <div class="d-flex justify-content-between align-items-start mb-5 flex-wrap gap-3">
+          <div>
+            <span class="detail-label d-block">Current Status</span>
+            <div class="status-badge mt-2"
+              [ngClass]="'bg-' + getStatusColor(orderDetails.status) + '-subtle text-' + getStatusColor(orderDetails.status)">
+              <!-- Note: Bootstrap 5.3 has bg-*-subtle. If not available, we might need custom classes. 
+                    Let's stick to simple backgrounds defined in CSS or inline style for now if subtle isn't there, 
+                    but since we have custom CSS for badges, let's use that. -->
+              <i class="fas fa-{{ getStatusIcon(orderDetails.status) }} me-2"></i>
+              {{ getStatusText(orderDetails.status) }}
+            </div>
           </div>
-          <div class="col-md-6">
-            <h5>Current Status</h5>
-            <div class="text-center py-3">
-              <span class="badge bg-{{ getStatusColor(orderDetails.status) }} fs-5 p-3">
-                <i class="fas fa-{{ getStatusIcon(orderDetails.status) }} me-2"></i>
-                {{ getStatusText(orderDetails.status) }}
-              </span>
-            </div>
-            <div class="text-center">
-              <p class="mb-1">
-                <i class="fas fa-map-marker-alt me-2"></i>
-                {{ orderDetails.currentLocation }}
-              </p>
-              <p class="mb-0">
-                <i class="fas fa-calendar-alt me-2"></i>
-                Estimated Delivery: {{ orderDetails.estimatedDelivery }}
-              </p>
-            </div>
+          <div class="text-end">
+            <span class="detail-label d-block">Estimated Delivery</span>
+            <span class="detail-value text-primary fs-4">{{ orderDetails.estimatedDelivery }}</span>
           </div>
         </div>
+
+        <hr class="text-muted opacity-25 mb-5">
+
+        <!-- Grid Layout for Details -->
+        <div class="tracking-grid">
+          <div class="detail-item">
+            <span class="detail-label">Tracking ID</span>
+            <span class="tracking-id-value">{{ orderDetails.trackingId }}</span>
+          </div>
+
+          <div class="detail-item">
+            <span class="detail-label">Customer</span>
+            <span class="detail-value">{{ orderDetails.customerName }}</span>
+          </div>
+
+          <div class="detail-item">
+            <span class="detail-label">Company Name</span>
+            <span class="detail-value">{{ orderDetails.companyName || 'Not Specified' }}</span>
+          </div>
+
+          <div class="detail-item">
+            <span class="detail-label">Company Address</span>
+            <span class="detail-value">{{ orderDetails.companyAddress || 'Not Specified' }}</span>
+          </div>
+
+          <div class="detail-item">
+            <span class="detail-label">Item</span>
+            <span class="detail-value">{{ orderDetails.itemName }}</span>
+          </div>
+
+          <div class="detail-item">
+            <span class="detail-label">Order Date</span>
+            <span class="detail-value">{{ formatDate(orderDetails.orderDate) }}</span>
+          </div>
+
+          <div class="detail-item">
+            <span class="detail-label">Location</span>
+            <span class="detail-value">{{ orderDetails.currentLocation }}</span>
+          </div>
+        </div>
+
       </div>
     </div>
 
     <!-- Progress Tracker -->
     <div class="card shadow mb-4">
-      <div class="card-header bg-light">
+      <div class="card-header">
         <h5 class="mb-0">
           <i class="fas fa-road me-2"></i>Order Journey
         </h5>
@@ -131,7 +136,7 @@
 
     <!-- Timeline -->
     <div class="card shadow mb-4">
-      <div class="card-header bg-light">
+      <div class="card-header">
         <h5 class="mb-0">
           <i class="fas fa-history me-2"></i>Order Timeline
         </h5>

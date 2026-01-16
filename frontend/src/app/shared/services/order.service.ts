@@ -18,7 +18,7 @@ export class OrderService {
     return this.http.get<Order[]>(`${this.apiUrl}/admin/orders`);
   }
 
-  getOrderById(id: number): Observable<Order> {
+  getOrderById(id: string): Observable<Order> {
     return this.http.get<Order>(`${this.apiUrl}/admin/orders/${id}`);
   }
 
@@ -30,11 +30,11 @@ export class OrderService {
     return this.http.post<Order>(`${this.apiUrl}/admin/orders`, order);
   }
 
-  updateOrderStatus(id: number, statusUpdate: OrderStatusUpdate): Observable<Order> {
+  updateOrderStatus(id: string, statusUpdate: OrderStatusUpdate): Observable<Order> {
     return this.http.put<Order>(`${this.apiUrl}/admin/orders/${id}/status`, statusUpdate);
   }
 
-  deleteOrder(id: number): Observable<void> {
+  deleteOrder(id: string): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/admin/orders/${id}`);
   }
 
@@ -45,7 +45,7 @@ export class OrderService {
 
   // Utility Methods
   getStatusColor(status: string): string {
-    switch(status) {
+    switch (status) {
       case 'PROCESSING': return 'warning';
       case 'CONFIRMED': return 'info';
       case 'DISPATCHED': return 'primary';
@@ -58,7 +58,7 @@ export class OrderService {
   }
 
   getStatusText(status: string): string {
-    const statusMap: {[key: string]: string} = {
+    const statusMap: { [key: string]: string } = {
       'PROCESSING': 'Processing',
       'CONFIRMED': 'Confirmed',
       'DISPATCHED': 'Dispatched',

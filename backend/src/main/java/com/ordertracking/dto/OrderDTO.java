@@ -7,12 +7,14 @@ import java.time.LocalDateTime;
 
 @Data
 public class OrderDTO {
-    private Long id;
+    private String id;
     private String trackingId;
     private String customerName;
     private String customerEmail;
     private String customerPhone;
     private String shippingAddress;
+    private String companyName;
+    private String companyAddress;
     private String itemName;
     private String itemDescription;
     private int quantity;

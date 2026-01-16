@@ -10,7 +10,7 @@ import { Order, OrderStatusUpdate } from '../../../shared/models/order.model';
     styleUrls: ['./update-status.component.css']
 })
 export class UpdateStatusComponent implements OnInit {
-    orderId!: number;
+    orderId!: string;
     order: Order | null = null;
     statusForm: FormGroup;
     isLoading = true;
@@ -42,7 +42,7 @@ export class UpdateStatusComponent implements OnInit {
 
     ngOnInit(): void {
         this.route.params.subscribe(params => {
-            this.orderId = +params['id'];
+            this.orderId = params['id'];
             this.loadOrder();
         });
     }

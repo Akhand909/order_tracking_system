@@ -16,6 +16,8 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import java.util.UUID;
+
 @Service
 public class OrderService {
 
@@ -25,6 +27,10 @@ public class OrderService {
     public OrderDTO createOrder(@NonNull OrderDTO orderDTO) {
         Order order = new Order();
         BeanUtils.copyProperties(orderDTO, order);
+
+        // Generate Tracking ID
+        order.setTrackingId("TRK" + UUID.randomUUID().toString().substring(0, 8).toUpperCase());
+
         order.setOrderDate(LocalDateTime.now());
         order.setStatus(OrderStatus.PROCESSING);
 
@@ -45,7 +51,7 @@ public class OrderService {
         return convertToDTO(order);
     }
 
-    public OrderDTO updateOrderStatus(@NonNull Long id, OrderStatusUpdateDTO statusUpdate) {
+    public OrderDTO updateOrderStatus(@NonNull String id, OrderStatusUpdateDTO statusUpdate) {
         Order order = orderRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Order not found with ID: " + id));
 
@@ -79,14 +85,14 @@ public class OrderService {
         return convertToDTO(updatedOrder);
     }
 
-    public OrderDTO getOrderById(@NonNull Long id) {
+    public OrderDTO getOrderById(@NonNull String id) {
         Order order = orderRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Order not found with ID: " + id));
         return convertToDTO(order);
     }
 
     @SuppressWarnings("null")
-    public void deleteOrder(@NonNull Long id) {
+    public void deleteOrder(@NonNull String id) {
         Order order = orderRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Order not found with ID: " + id));
         orderRepository.delete(order);

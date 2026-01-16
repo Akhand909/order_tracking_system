@@ -1,29 +1,29 @@
 package com.ordertracking.model;
 
 import lombok.Data;
-import javax.persistence.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
-@Entity
-@Table(name = "admin_users")
+@Document(collection = "admin_users")
 @Data
 public class AdminUser {
-    
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    
-    @Column(unique = true, nullable = false)
+    private String id;
+
+    @Field
     private String username;
-    
-    @Column(nullable = false)
+
+    @Field
     private String password;
-    
-    @Column(nullable = false)
+
+    @Field
     private String email;
-    
-    @Column(nullable = false)
+
+    @Field
     private String fullName;
-    
-    @Column(nullable = false)
+
+    @Field
     private String role = "ADMIN";
 }

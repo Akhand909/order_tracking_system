@@ -1,70 +1,67 @@
 package com.ordertracking.model;
 
 import lombok.Data;
-import javax.persistence.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
+
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-@Entity
-@Table(name = "customer_orders")
+@Document(collection = "customer_orders")
 @Data
 public class Order {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String id;
 
-    @Column(unique = true, nullable = false)
+    @Field
     private String trackingId;
 
-    @Column(nullable = false)
+    @Field
     private String customerName;
 
-    @Column(nullable = false)
+    @Field
     private String customerEmail;
 
-    @Column(nullable = false)
+    @Field
     private String customerPhone;
 
-    @Column(nullable = false)
+    @Field
     private String shippingAddress;
 
-    @Column
+    @Field
     private String companyName;
 
-    @Column
+    @Field
     private String companyAddress;
 
-    @Column(nullable = false)
+    @Field
     private String itemName;
 
+    @Field
     private String itemDescription;
 
-    @Column(nullable = false)
+    @Field
     private int quantity;
 
-    @Column(nullable = false)
+    @Field
     private double totalAmount;
 
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+    @Field
     private OrderStatus status;
 
-    @Column(nullable = false)
+    @Field
     private LocalDateTime orderDate;
 
     private LocalDateTime dispatchedDate;
     private LocalDateTime inTransitDate;
     private LocalDateTime deliveredDate;
 
-    @Column(length = 500)
+    @Field
     private String notes;
 
-    @PrePersist
-    protected void onCreate() {
-        this.trackingId = "TRK" + UUID.randomUUID().toString()
-                .substring(0, 8).toUpperCase();
-        this.orderDate = LocalDateTime.now();
+    public Order() {
         this.status = OrderStatus.PROCESSING;
     }
 }
